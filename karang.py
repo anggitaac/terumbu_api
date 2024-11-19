@@ -3,12 +3,11 @@ import tensorflow as tf
 import numpy as np
 from PIL import Image
 import io
-import os
 from flask_cors import CORS
 
-CORS(app)
-
 app = Flask(__name__)
+CORS(app)  # Aktifkan CORS setelah app dibuat
+
 
 # Load model dengan format .keras
 model = tf.keras.models.load_model('karang.keras')
@@ -43,7 +42,6 @@ def predict():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-if __name__ == '__main__':
-    app.run(debug=True, port=3000)
+
 
 
