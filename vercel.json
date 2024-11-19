@@ -1,7 +1,9 @@
 {
-    "version": 2,
-    "routes": [
-      { "src": "/(.*)", "dest": "karang.py" }
-    ]
-  }
-  
+  "version": 2,
+  "builds": [
+    { "src": "karang.py", "use": "@vercel/python" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "karang.py" }
+  ]
+}
