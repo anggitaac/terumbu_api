@@ -4,13 +4,16 @@ import numpy as np
 from PIL import Image
 import io
 from flask_cors import CORS
+import urllib.request
+
 
 app = Flask(__name__)
 CORS(app)  # Aktifkan CORS setelah app dibuat
 
 # Load model dengan format .keras
-MODEL_PATH = "karang.keras"
-model = tf.keras.models.load_model(MODEL_PATH)
+model_url = "https://github.com/anggitaac/terumbukarang_api/releases/download/karang/karang.keras"
+model_path = "karang.keras"
+model = tf.keras.models.load_model(model_path)
 
 # Fungsi untuk memproses gambar
 def preprocess_image(image_data):
