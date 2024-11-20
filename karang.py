@@ -8,10 +8,9 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)  # Aktifkan CORS setelah app dibuat
 
-
 # Load model dengan format .keras
-MODEL_URL = "https://github.com/anggitaac/terumbukarang_api/releases/download/karang/karang.keras"
 MODEL_PATH = "karang.keras"
+model = tf.keras.models.load_model(MODEL_PATH)
 
 # Fungsi untuk memproses gambar
 def preprocess_image(image_data):
@@ -43,3 +42,5 @@ def predict():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+if __name__ == '__main__':
+    app.run(debug=True)
